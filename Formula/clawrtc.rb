@@ -3,16 +3,16 @@ require "formula"
 class Clawrtc < Formula
   desc "Mine RTC tokens - PowerPC G4/G5 get 2.0-2.5x multiplier!"
   homepage "https://bottube.ai"
-  url "https://github.com/Scottcjn/Rustchain/archive/refs/heads/main.tar.gz"
+  url "https://github.com/Scottcjn/Rustchain/archive/refs/tags/clawrtc-v1.0.0.tar.gz"
   version "1.0.0"
-  sha256 ""
+  sha256 "44c3ee0a0f0c4b4156f8d37f222101da3693f91eb21b9764a895294bd6ef422d"
 
   depends_on "python"
 
   def install
-    # Install the universal miner directly for PowerPC
-    libexec.install "miners/rustchain_universal_miner.py"
-    libexec.install "miners/fingerprint_checks.py" if File.exist?("miners/fingerprint_checks.py")
+    # Install the universal miner directly for PowerPC.
+    # The miner lives under deprecated/old_miners/ in the pinned tag.
+    libexec.install "deprecated/old_miners/rustchain_universal_miner.py"
 
     # Create wrapper script
     (bin/"clawrtc").write <<~EOS
